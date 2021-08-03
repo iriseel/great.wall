@@ -1,0 +1,736 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans SC', sans-serif;
+    cursor: url(../img/trowel.png), auto;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    max-width:100%;
+}
+
+body {
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position:bottom;
+}
+
+a {
+    color:rgb(170,21,39);
+    font-weight:900;
+}
+
+.info_icon {
+    color:white;
+    font-weight:700;
+    font-size:1.3rem;
+    padding:.2rem 1rem;
+    margin:1rem;
+    border: 1px white solid;
+    opacity:.85;
+    
+    position:fixed;
+    left:0;
+    z-index:3;
+    transition: .5s linear;
+}
+
+.info {
+    position:fixed;
+    left:5rem;
+    top:.75rem;
+    max-height:18%;
+    overflow-y:scroll;
+    
+    z-index:3;
+    color:white;
+    font-size:2rem;
+    font-weight:400;
+    margin-right:3rem;
+    
+    opacity:0;
+    visibility:hidden;
+    
+    transition: .5s linear;
+}
+
+.info_icon:hover {
+    background-color: red;
+    opacity:1;
+}
+
+.info_icon:hover .info{
+    visibility:visible;
+    opacity:1;
+    transition: .5s linear;
+}
+
+.container {
+    position:relative;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.wall {
+    position:relative;
+    width:100%;
+    height:70%;
+    
+    overflow-x: scroll;
+    overflow-y:hidden;
+    white-space:nowrap;
+    
+}
+
+.photo_set {
+    position:relative;    
+    width:43%;
+    height:100%;
+    margin:0% .5%;
+    
+    display:inline-flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo_set.vertical {
+    width:20%;
+    height:100%;
+}
+
+.photo_set.big {
+    width:100%;
+    height:100%;
+}
+
+.photo_set.bbig {
+    width:180%;
+    height:100%;
+}
+
+.photo_set.video {
+    width:63%;
+    height:100%;
+}
+
+.photo_set.video.vertical {
+    width:21.5%;1280 / 2.5);*/
+    height:100%;
+}
+
+.photo {
+    position:relative;
+    width:100%;
+    height:80%;
+    
+    opacity:1;
+    transition: .5s linear;
+    backface-visibility: hidden;
+    overflow:hidden;
+}
+
+.photo img {
+    height:100%;
+    width:100%;
+    transition: .5s linear;
+    object-fit: cover; 
+}
+
+.photo video {
+    object-fit: cover;
+}
+
+
+/*default zoom*/
+.photo:hover img {
+    transform:scale(1.25);
+}
+
+/*no zoom*/
+.photo.nozoom:hover img {
+    transform:none;
+}
+
+/*default zoom direction mods*/
+.photo.zoomleft:hover img {
+    transform:scale(1.25) translateX(10%);
+}
+
+.photo.zoomright:hover img {
+    transform:scale(1.25) translateX(-10%);
+}
+
+.photo.zoomup:hover img {
+    transform:scale(1.25) translateY(10%);
+}
+
+.photo.zoomdown:hover img {
+    transform:scale(1.25) translateY(-10%);
+}
+
+.photo.zoomleftup:hover img {
+    transform:scale(1.25) translateX(10%) translateY(10%);
+}
+.photo.zoomleftdown:hover img {
+    transform:scale(1.25) translateX(10%) translateY(-10%);
+}
+.photo.zoomrightup:hover img {
+    transform:scale(1.25) translateX(-10%) translateY(10%);
+}
+.photo.zoomrightdown:hover img {
+    transform:scale(1.25) translateX(-10%) translateY(-10%);
+}
+
+/*1.75x zoom + direction mods*/
+.photo.zzoom:hover img {
+    transform:scale(1.75);
+}
+
+.photo.zzoomleft:hover img {
+    transform:scale(1.75) translateX(10%);
+}
+
+.photo.zzoomright:hover img {
+    transform:scale(1.75) translateX(-10%);
+}
+
+.photo.zzoomup:hover img {
+    transform:scale(1.75) translateY(10%);
+}
+
+.photo.zzoomdown:hover img {
+    transform:scale(1.75) translateY(-10%);
+}
+
+/*1.75x zoom + extra direction mods*/
+.photo.zzoomrightup:hover img {
+    transform:scale(1.75) translateX(-10%) translateY(10%);
+}
+
+.photo.zzoomrightdown:hover img {
+    transform:scale(1.75) translateX(-10%) translateY(-10%);
+}
+
+.photo.zzoomlleft:hover img {
+    transform:scale(1.75) translateX(20%);
+}
+
+.photo.zzoomrright:hover img {
+    transform:scale(1.75) translateX(-20%);
+}
+
+.photo.zzoomddown:hover img {
+    transform:scale(1.75) translateY(-20%);
+}
+
+.photo.zzoomlleftddown:hover img {
+    transform:scale(1.75) translateX(21%) translateY(-20%);
+}
+.photo.zzoomrrightddown:hover img {
+    transform:scale(1.75) translateX(-21%) translateY(-20%);
+}
+
+/*3.5x zoom*/
+.photo.zzzoom:hover img {
+    transform:scale(3.5);
+}
+
+.description_bg, .caption_bg {
+    width:100%;
+    transition: .5s linear;
+    opacity: 0;
+    
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    
+    background-color:rgb(170,21,39);
+    
+}
+
+.description_bg {
+    height:12%;
+}
+
+.caption_bg {
+    height:8%;
+}
+
+.photo_set:hover .description_bg, .photo_set:hover .caption_bg {
+    opacity: 1;
+}
+
+.description, .caption {
+    white-space: normal;
+    width:100%;
+    
+    /*the calc(100% - 800px) is because I want the textbox to be only 800px*/
+    padding:0% min(10%, calc(100% - 800px));
+    
+    /*because with the scrollbar, the ending padding is ignored for some reason - so I'm adding a bit of "padding" between the .description and .description_bg with the height:100-5%*/
+    height:95%;
+    color:white;
+    font-size:16px;
+    font-weight:400;
+    text-align:center;
+    
+    overflow-y:scroll;
+}
+
+/*otherwise, because of the preceding padding:0% min(10%, calc(100% - 800px)); vertical photos will have negative (i.e., no) padding*/
+.vertical .description {
+    padding:0% 10%;
+}
+
+p {
+    margin: .5em 0em;
+}
+
+.description footnote {
+    font-size:.75em;
+    display:inline-block;
+}
+
+.box {
+    border: 1px solid white;
+    padding:0em .4em;
+    margin:0.2em;
+    line-height:2em;
+}
+
+.round {
+    border-radius:10em;
+}
+
+
+
+
+
+
+
+/*MEDIA QUERIES*/
+/*MEDIA QUERIES*/
+/*MEDIA QUERIES*/
+
+/*When width is not that much longer than height*/
+@media screen 
+  and (max-aspect-ratio:17/9) { 
+    body {
+        background-image:url(../img/great_wall_topcut_blue.jpg);
+    }
+}
+
+@media screen 
+  and (min-aspect-ratio:17/9) 
+  and (max-aspect-ratio:19/9) { 
+    body {
+        background-image:url(../img/great_wall_bottomcut_blue.jpg);
+    }
+}
+
+@media screen 
+  and (min-aspect-ratio:19/9) { 
+    body {
+        background-image:url(../img/great_wall_bottomcut_blue.jpg);
+        background-position:center;
+    }
+}
+
+@media screen 
+    and (max-height: 1000px) {
+        .info {
+            max-height:16%;
+            font-size:1.75rem;
+        }
+        
+        .wall {
+            height:80%;
+        }
+}
+
+@media screen 
+    and (max-height: 750px) {
+        
+        .info {
+             max-height:9%;
+            font-size:1.5rem;
+        }
+        
+        .wall {
+            height:100%;
+        }
+        
+        /*When the window is so short the usual height:95%; amounts to insufficient padding*/
+        .description {
+            max-height:calc(100% - 16px);
+        }
+}
+
+@media screen 
+    and (max-height: 650px) {
+        .info_icon {
+             display:none;
+        }
+}
+
+@media screen 
+    and (max-height: 650px)
+    and (min-aspect-ratio: 10/3) {
+        
+    body {
+        background-image:url(../img/great_wall_topcut_blue.jpg);
+        background-position:top;
+    }
+        
+        .wall {
+            overflow-y:scroll;
+        }
+        
+        .photo_set {  
+            min-height:700px;
+        }
+}
+
+@media screen
+    and (max-width: 1860px) {
+        .description, .caption {
+            padding:0% 10%;
+        }
+}
+
+/*When the window width is too narrow compared to the height, expand the widths of the photos*/
+@media screen 
+    and (max-aspect-ratio: 7/4)
+    {
+        /*
+        body {
+            background-image:none;
+            background-color:pink;
+        }
+        */
+        
+        .photo_set {  
+            width:50%;
+        }
+
+        .photo_set.vertical {
+            width:calc(50% * 20 / 43);
+        }
+        
+        .photo_set.big {
+            width:calc(50% * 100 / 43);
+        }
+
+        .photo_set.bbig {
+            width:calc(50% * 180 / 43);
+        }
+        
+        .photo_set.video {
+            width:calc(50% * 63 / 43);
+        }
+
+        .photo_set.video.vertical {
+            width:calc(50% * 21.5 / 43);
+        }
+}
+
+@media screen 
+    and (max-aspect-ratio: 3/2)
+    {
+        /*
+        body {
+            background-image:none;
+            background-color:yellow;
+        }
+        */
+        
+        .photo_set {  
+            width:58%;
+        }
+
+        .photo_set.vertical {
+            width:calc(58% * 20 / 43);
+        }
+
+        .photo_set.big {
+            width:calc(58% * 100 / 43);
+        }
+
+        .photo_set.bbig {
+            width:calc(58% * 180 / 43);
+        }
+        
+        .photo_set.video {
+            width:calc(58% * 63 / 43);
+        }
+
+        .photo_set.video.vertical {
+            width:calc(58% * 21.5 / 43);
+        }
+}
+
+@media screen 
+    and (max-aspect-ratio: 4/3)
+    {
+        
+        /*
+        body {
+            background-image:none;
+            background-color:bisque;
+        }
+        */
+        
+        .photo_set {  
+            width:66%;
+        }
+
+        .photo_set.vertical {
+            width:calc(66% * 20 / 43);
+        }
+        
+        .photo_set.big {
+            width:calc(66% * 100 / 43);
+        }
+
+        .photo_set.bbig {
+            width:calc(66% * 180 / 43);
+        }
+        
+        .photo_set.video {
+            width:calc(66% * 63 / 43);
+        }
+
+        .photo_set.video.vertical {
+            width:calc(66% * 21.5 / 43);
+        }
+}
+
+@media screen 
+    and (max-aspect-ratio: 6/5)
+    {
+        
+        /*
+        body {
+            background-image:none;
+            background-color:red;
+        }
+        */
+        
+        .photo_set {  
+            width:72%;
+        }
+
+        .photo_set.vertical {
+            width:calc(72% * 20 / 43);
+        }
+        
+        .photo_set.big {
+            width:calc(72% * 100 / 43);
+        }
+
+        .photo_set.bbig {
+            width:calc(72% * 180 / 43);
+        }
+        
+        .photo_set.video {
+            width:calc(72% * 63 / 43);
+        }
+
+        .photo_set.video.vertical {
+            width:calc(72% * 21.5 / 43);
+        }
+}
+@media screen 
+    and (max-aspect-ratio: 9/8)
+    {
+        
+        /*
+        body {
+            background-image:none;
+            background-color:blue;
+        }
+        */
+        
+        .photo_set {  
+            width:75%;
+        }
+
+        .photo_set.vertical {
+            width:calc(75% * 20 / 43);
+        }
+        
+        .photo_set.big {
+            width:calc(75% * 100 / 43);
+        }
+
+        .photo_set.bbig {
+            width:calc(75% * 180 / 43);
+        }
+        
+        .photo_set.video {
+            width:calc(75% * 63 / 43);
+        }
+
+        .photo_set.video.vertical {
+            width:calc(75% * 21.5 / 43);
+        }
+}
+
+@media 
+    screen and (max-aspect-ratio: 1/1){
+        
+        /*
+        body {
+            background-image:none;
+            background-color:powderblue;
+        }
+        */
+
+        .photo_set {  
+            width:90%;
+        }
+
+        .photo_set.vertical {
+            width:calc(90% * 20 / 43);
+        }
+        
+        .photo_set.big {
+            width:calc(90% * 100 / 43);
+        }
+
+        .photo_set.bbig {
+            width:calc(90% * 180 / 43);
+        }
+        
+        .photo_set.video {
+            width:calc(90% * 63 / 43);
+        }
+
+        .photo_set.video.vertical {
+            width:calc(90% * 21.5 / 43);
+        }
+}
+
+@media 
+    screen and (max-aspect-ratio: 5/6){
+        
+    body {
+        background-image:url(../img/great_wall_vertical_blue.jpg);
+    }
+
+        .photo_set {  
+            width:100%;
+            min-width:900px;
+        }
+
+        .photo_set.vertical {
+            width:calc(100% * 20 / 43);
+            min-width:calc(900px * 20 / 43);
+        }
+        
+        .photo_set.big {
+            width:calc(100% * 100 / 43);
+            min-width:calc(900px * 100 / 43);
+        }
+
+        .photo_set.bbig {
+            width:calc(100% * 180 / 43);
+            min-width:calc(900px * 180 / 43);
+        }
+        
+        .photo_set.video {
+            width:calc(100% * 63 / 43);
+            min-width:calc(900px * 63 / 43);
+        }
+
+        .photo_set.video.vertical {
+            width:calc(100% * 21.5 / 43);
+            min-width:calc(900px * 21.5 / 43);
+        }
+    
+}
+
+/*For iphones*/
+@media screen
+    and (hover:none)
+    and (orientation:portrait)
+    and (max-aspect-ratio: 2/3) {
+        
+        .info_icon {
+             display:none;
+        }
+        .info_icon:first-of-type {
+             display:block;
+        }
+        
+        .info {
+            max-height:21%;
+            font-size:1.25rem;
+            margin-right:0.5rem;
+        }
+        
+        .wall {
+            height:85%;
+            align-self:flex-end;
+        }
+        
+        .photo_set {  
+            width:100%;
+            min-width:0px;
+        }
+        
+        /*changing the dimensions here so it's not too narrow*/
+        .photo_set.vertical {
+            width:calc(100% * 30 / 43);
+            min-width:0px;
+        }
+        
+        .photo_set.big {
+            max-width:calc(100% * 100 / 43);
+            min-width:0px;
+        }
+
+        .photo_set.bbig {
+            max-width:calc(100% * 180 / 43);
+            min-width:0px;
+        }
+        
+        .photo_set.video {
+            width:calc(100% * 30 / 43);
+            min-width:0px;
+        }
+
+        /*changing the dimensions here so it's not too narrow*/
+        .photo_set.video.vertical {
+            width:100%;
+            min-width:0px;
+        }
+        
+        .photo {
+            height: 53%;
+        }
+        
+        .description_bg {
+            height:34%;
+        }
+
+        .caption_bg {
+            height:13%;
+        }
+        
+}
