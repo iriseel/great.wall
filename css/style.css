@@ -36,6 +36,7 @@ a {
     padding:.2rem 1rem;
     margin:1rem;
     border: 1px white solid;
+    background-color:transparent;
     opacity:.85;
     
     position:fixed;
@@ -67,12 +68,12 @@ a {
     transition: .5s linear;
 }
 
-.info_icon:hover {
+.info_icon:hover, .info_icon:focus {
     background-color: red;
     opacity:1;
 }
 
-.info_icon:hover .info{
+.info_icon:hover .info, .info_icon:focus .info {
     visibility:visible;
     opacity:1;
     transition: .5s linear;
@@ -676,7 +677,7 @@ p {
         }
         
         .info {
-            max-height:calc(15% + (2.4rem + 5%) - .5rem);
+            max-height:calc(15% + (2.4rem + 5%) - 2 * .75rem);
             font-size:1.25rem;
             margin-right:0.5rem;
         }
@@ -689,6 +690,9 @@ p {
         .photo_set {  
             /*This margin-bottom is to leave space for the .info_icon:nth-of-type(2)*/
             margin-bottom: 2rem;
+            
+            /*Otherwise the extra margin-bottom will not be exclusively distributed to the bottom, but rather distributed evenly to top and bottom if justify-content:center*/
+            justify-content: flex-start;
             width:100%;
             min-width:0px;
             max-height:calc(1536/2049 * 100vw + 47%);
