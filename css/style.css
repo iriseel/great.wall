@@ -37,7 +37,7 @@ a {
     margin:1rem;
     border: 1px white solid;
     background-color:transparent;
-    opacity:.85;
+    opacity:1;
     
     position:fixed;
     left:0;
@@ -68,12 +68,12 @@ a {
     transition: .5s linear;
 }
 
-.info_icon:hover, .info_icon:focus {
+.info_icon:hover, .info_icon:active {
     background-color: red;
     opacity:1;
 }
 
-.info_icon:hover .info, .info_icon:focus .info {
+.info_icon:hover .info, .info_icon:active .info {
     visibility:visible;
     opacity:1;
     transition: .5s linear;
