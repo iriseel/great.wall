@@ -48,7 +48,11 @@ a {
     position:fixed;
     left:5rem;
     top:.75rem;
-    max-height:18%;
+    
+    /*.info max-height = the height of the screen minus the height of the .wall / 2 (because the .wall is centered vertically), plus the height of the .caption_bg, and then plus a little padding
+    But also you need the second min value in case the .wall hits its min-height*/
+    max-height: min(calc(30% / 2 + .08 * 70% - 1.5 * .75rem), calc((100% - (1536/2049 * 43vw + 20%)) / 2 + .08 * 70% - 1.5 * .75rem));
+    
     overflow-y:scroll;
     
     z-index:3;
@@ -88,6 +92,7 @@ a {
     position:relative;
     width:100%;
     height:70%;
+    min-height:calc(1536/2049 * 43vw + 20%);
     
     overflow-x: scroll;
     overflow-y:hidden;
@@ -98,37 +103,46 @@ a {
 .photo_set {
     position:relative;    
     width:43%;
+    min-width:750px;
     height:100%;
+    min-height:calc(1536/2049 * 43vw + 20%);
     margin:0% .5%;
     
     display:inline-flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    
+    overflow-y:scroll;
 }
 
 .photo_set.vertical {
     width:20%;
+    min-width:calc(750px * 20 / 43);
     height:100%;
 }
 
 .photo_set.big {
     width:100%;
+    min-width:calc(750px * 100 / 43);
     height:100%;
 }
 
 .photo_set.bbig {
     width:180%;
+    min-width:calc(750px * 180 / 43);
     height:100%;
 }
 
 .photo_set.video {
     width:63%;
+    min-width:calc(750px * 63 / 43);
     height:100%;
 }
 
 .photo_set.video.vertical {
-    width:21.5%;1280 / 2.5);*/
+    width:21.5%;
+    min-width:calc(750px * 21.5 / 43);
     height:100%;
 }
 
@@ -136,6 +150,7 @@ a {
     position:relative;
     width:100%;
     height:80%;
+    min-height:calc(1536/2049 * 43vw);
     
     opacity:1;
     transition: .5s linear;
@@ -354,7 +369,7 @@ p {
 @media screen 
     and (max-height: 1000px) {
         .info {
-            max-height:16%;
+            max-height:min(calc(20% / 2 + .08 * 80% - 1.5 * .75rem), calc((100% - (1536/2049 * 43vw + 20%)) / 2 + .08 * 80% - 1.5 * .75rem));
             font-size:1.75rem;
         }
         
@@ -364,15 +379,26 @@ p {
 }
 
 @media screen 
-    and (max-height: 750px) {
+    and (min-aspect-ratio: 1764/736) {
+        
+        .info_icon:nth-of-type(2) {
+             display:none;
+        }
+        
+        .info_icon {
+            padding:0rem .75rem;
+        }
         
         .info {
-             max-height:9%;
+             max-height:calc(8% - .75rem);
+            min-height:2rem;
+            
             font-size:1.5rem;
         }
         
         .wall {
             height:100%;
+            align-self:flex-start;
         }
         
         /*When the window is so short the usual height:95%; amounts to insufficient padding*/
@@ -382,28 +408,19 @@ p {
 }
 
 @media screen 
-    and (max-height: 650px) {
-        .info_icon {
-             display:none;
-        }
-}
-
-@media screen 
     and (max-height: 650px)
     and (min-aspect-ratio: 10/3) {
         
-    body {
-        background-image:url(../img/great_wall_topcut_blue.jpg);
-        background-position:top;
-    }
+        body {
+            background-image:url(../img/great_wall_topcut_blue.jpg);
+            background-position:top;
+        }
         
         .wall {
             overflow-y:scroll;
+            align-self:flex-start;
         }
         
-        .photo_set {  
-            min-height:700px;
-        }
 }
 
 @media screen
@@ -413,23 +430,20 @@ p {
         }
 }
 
-/*When the window width is too narrow compared to the height, expand the widths of the photos*/
+/*When the window width is too narrow compared to the height, expand the widths of the photos — this may have been solved? by setting min-width
 @media screen 
     and (max-aspect-ratio: 7/4)
     {
-        /*
         body {
             background-image:none;
             background-color:pink;
         }
-        */
         
         .photo_set {  
             width:50%;
         }
 
         .photo_set.vertical {
-            width:calc(50% * 20 / 43);
         }
         
         .photo_set.big {
@@ -452,12 +466,10 @@ p {
 @media screen 
     and (max-aspect-ratio: 3/2)
     {
-        /*
         body {
             background-image:none;
             background-color:yellow;
         }
-        */
         
         .photo_set {  
             width:58%;
@@ -488,12 +500,10 @@ p {
     and (max-aspect-ratio: 4/3)
     {
         
-        /*
         body {
             background-image:none;
             background-color:bisque;
         }
-        */
         
         .photo_set {  
             width:66%;
@@ -524,12 +534,10 @@ p {
     and (max-aspect-ratio: 6/5)
     {
         
-        /*
         body {
             background-image:none;
             background-color:red;
         }
-        */
         
         .photo_set {  
             width:72%;
@@ -559,12 +567,10 @@ p {
     and (max-aspect-ratio: 9/8)
     {
         
-        /*
         body {
             background-image:none;
             background-color:blue;
         }
-        */
         
         .photo_set {  
             width:75%;
@@ -594,12 +600,10 @@ p {
 @media 
     screen and (max-aspect-ratio: 1/1){
         
-        /*
         body {
             background-image:none;
             background-color:powderblue;
         }
-        */
 
         .photo_set {  
             width:90%;
@@ -625,6 +629,7 @@ p {
             width:calc(90% * 21.5 / 43);
         }
 }
+*/
 
 @media 
     screen and (max-aspect-ratio: 5/6){
@@ -635,32 +640,26 @@ p {
 
         .photo_set {  
             width:100%;
-            min-width:900px;
         }
 
         .photo_set.vertical {
             width:calc(100% * 20 / 43);
-            min-width:calc(900px * 20 / 43);
         }
         
         .photo_set.big {
             width:calc(100% * 100 / 43);
-            min-width:calc(900px * 100 / 43);
         }
 
         .photo_set.bbig {
             width:calc(100% * 180 / 43);
-            min-width:calc(900px * 180 / 43);
         }
         
         .photo_set.video {
             width:calc(100% * 63 / 43);
-            min-width:calc(900px * 63 / 43);
         }
 
         .photo_set.video.vertical {
             width:calc(100% * 21.5 / 43);
-            min-width:calc(900px * 21.5 / 43);
         }
     
 }
@@ -671,15 +670,13 @@ p {
     and (orientation:portrait)
     and (max-aspect-ratio: 2/3) {
         
-        .info_icon {
-             display:none;
-        }
-        .info_icon:first-of-type {
-             display:block;
+        .info_icon:nth-of-type(2) {
+            font-size:1rem;
+            margin:0.2rem 0rem;
         }
         
         .info {
-            max-height:21%;
+            max-height:calc(15% + (2.4rem + 5%) - .5rem);
             font-size:1.25rem;
             margin-right:0.5rem;
         }
@@ -690,8 +687,11 @@ p {
         }
         
         .photo_set {  
+            /*This margin-bottom is to leave space for the .info_icon:nth-of-type(2)*/
+            margin-bottom: 2rem;
             width:100%;
             min-width:0px;
+            max-height:calc(1536/2049 * 100vw + 47%);
         }
         
         /*changing the dimensions here so it's not too narrow*/
@@ -711,26 +711,27 @@ p {
         }
         
         .photo_set.video {
-            width:calc(100% * 30 / 43);
+            width:calc(100% * 63 / 43);
             min-width:0px;
         }
 
         /*changing the dimensions here so it's not too narrow*/
         .photo_set.video.vertical {
-            width:100%;
+            width:calc(100% * 30 / 43);
             min-width:0px;
         }
         
         .photo {
             height: 53%;
+            max-height:calc(1536/2049 * 100vw);
         }
         
         .description_bg {
-            height:34%;
+            height:calc(100% - 53% - (2.4rem + 5%) - 2rem);
         }
 
         .caption_bg {
-            height:13%;
+            height:calc(2.4rem + 5%);
         }
         
 }
