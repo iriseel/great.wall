@@ -376,6 +376,14 @@ p {
         .wall {
             height:80%;
         }
+        
+}
+
+@media screen 
+    and (min-aspect-ratio: 2559/1155) {
+        .info_icon:nth-of-type(2) {
+             display:none;
+        }
 }
 
 @media screen 
@@ -386,7 +394,8 @@ p {
         }
         
         .info_icon {
-            padding:0rem .75rem;
+            font-size:1.1rem;
+            padding:0rem .65rem;
         }
         
         .info {
