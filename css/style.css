@@ -679,17 +679,6 @@ p {
     and (orientation:portrait)
     and (max-aspect-ratio: 2/3) {
         
-        .info_icon:first-of-type {
-            background-color:rgb(170,21,39);
-        }
-        
-        .info_icon:focus .info, .info_icon:active .info {
-            
-            visibility:visible;
-            opacity:1;
-            transition: .5s linear;
-        }
-        
         .info_icon:nth-of-type(2) {
             font-size:1rem;
             margin:0.4rem;
